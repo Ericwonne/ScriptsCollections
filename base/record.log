@@ -1,0 +1,70 @@
+2023-12-17 01:06:37.179 | INFO     | __main__:form_xlsx_file:59 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:11:13.447 | INFO     | __main__:form_xlsx_file:60 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:11:42.796 | INFO     | __main__:form_xlsx_file:60 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:11:47.325 | INFO     | __main__:form_xlsx_file:60 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:12:00.400 | INFO     | __main__:form_xlsx_file:60 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:12:40.894 | INFO     | __main__:form_xlsx_file:60 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:13:32.447 | INFO     | __main__:form_xlsx_file:66 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:16:19.099 | INFO     | __main__:form_xlsx_file:65 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:17:26.255 | INFO     | __main__:form_xlsx_file:65 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:17:34.830 | INFO     | __main__:form_xlsx_file:65 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:20:29.442 | INFO     | __main__:form_xlsx_file:72 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:24:18.399 | INFO     | __main__:form_xlsx_file:73 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:35:19.658 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:36:28.359 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:36:38.228 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:37:12.059 | INFO     | __main__:form_xlsx_file:82 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:42:13.443 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:42:34.027 | INFO     | __main__:form_xlsx_file:85 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:44:59.660 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:45:13.154 | INFO     | __main__:form_xlsx_file:86 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:46:26.979 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:47:18.701 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:48:38.603 | INFO     | __main__:form_xlsx_file:86 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:49:39.769 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:51:56.458 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 01:52:13.780 | INFO     | __main__:form_xlsx_file:89 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 01:52:35.825 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:20:58.457 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:23:15.651 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:26:13.050 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:26:50.915 | INFO     | __main__:form_xlsx_file:101 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:30:30.164 | DEBUG    | __main__:get_struct_from_input:19 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:31:08.586 | DEBUG    | __main__:main:110 - 单价：2.5
+2023-12-17 02:31:08.586 | DEBUG    | __main__:main:111 - 结构：[[datetime.date(2023, 1, 1), 20, [[datetime.date(2023, 4, 4), 20]]], [datetime.date(2023, 2, 1), 20, [[datetime.date(2023, 3, 1), 10], [datetime.date(2023, 4, 1), 10]]]]
+2023-12-17 02:31:08.588 | INFO     | __main__:form_xlsx_file:101 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:34:22.798 | INFO     | __main__:form_xlsx_file:105 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:35:55.159 | DEBUG    | __main__:get_struct_from_input:20 - 结算单输入信息收集，默认拉板对回板为一对多
+
+2023-12-17 02:37:10.089 | DEBUG    | __main__:get_struct_from_input:46 - 单价：2.9
+2023-12-17 02:37:10.089 | DEBUG    | __main__:get_struct_from_input:47 - 结构：[[datetime.date(2023, 1, 1), 20, [[datetime.date(2023, 2, 1), 10], [datetime.date(2023, 2, 5), 5], [datetime.date(2023, 3, 3), 5]]], [datetime.date(2023, 2, 1), 15, [[datetime.date(2023, 5, 1), 10], [datetime.date(2023, 5, 10), 5]]], [datetime.date(2023, 3, 3), 5, [[datetime.date(2024, 5, 5), 5]]]]
+2023-12-17 02:37:10.091 | INFO     | __main__:form_xlsx_file:105 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:37:45.349 | INFO     | __main__:form_xlsx_file:105 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:47:02.930 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:47:25.337 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:49:23.130 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:53:50.026 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 02:54:57.756 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:11:15.428 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:19:46.057 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:22:32.656 | INFO     | __main__:form_xlsx_file:108 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:30:45.814 | INFO     | __main__:form_xlsx_file:111 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:34:05.112 | INFO     | __main__:form_xlsx_file:111 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:38:42.065 | INFO     | __main__:form_xlsx_file:114 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:42:18.198 | INFO     | __main__:form_xlsx_file:117 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:48:26.112 | INFO     | __main__:form_xlsx_file:118 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx
+2023-12-17 03:50:39.024 | INFO     | __main__:form_xlsx_file:118 - the file is saved to C:\Users\westwell\Desktop\年度钢板结算单.xlsx

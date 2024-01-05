@@ -126,7 +126,10 @@ def main():
     # price, structure = 2.5, [[datetime.date(2023, 1, 1), 20, [[datetime.date(2023, 2, 1), 10], [datetime.date(2023, 2, 5), 5], [datetime.date(2023, 3, 3), 5]]], [datetime.date(2023, 2, 1), 15, [[datetime.date(2023, 5, 1), 10], [datetime.date(2023, 5, 10), 5]]], [datetime.date(2023, 3, 3), 5, [[datetime.date(2024, 5, 5), 5]]]]
     filename = form_xlsx_file(price, structure)
     print(f"已将输出信息保存到{filename}中！\n")
+    os.system("pause")
 
 
 if __name__ == '__main__':
+    # From https://chat.openai.com/c/34221f1f-8901-42dc-9ff7-0929658ef3fb
+    # pyinstaller --onefile -n SillyBee.py
     main()

@@ -55,26 +55,49 @@
 #     window = MyWindow()
 #     sys.exit(app.exec_())
 
-import pandas as pd
+# import pandas as pd
+#
+# json_data = {
+#     "product": {
+#         "product_name": "computer",
+#         "price": 1200
+#     },
+#     "store": {
+#         "store_number": 77,
+#         "store_city": "London"
+#     },
+#     "time": {
+#         "opening_hours": "8-18",
+#         "opening_days": "Mon-Fri"
+#     }
+# }
+#
+# # Json to DataFrame
+# df = pd.json_normalize(json_data)
+#
+# # DataFrame to Excel
+# excel_filename = 'json_data_to_excel.xlsx'
+# df.to_excel(excel_filename, index=False)
 
-json_data = {
-    "product": {
-        "product_name": "computer",
-        "price": 1200
-    },
-    "store": {
-        "store_number": 77,
-        "store_city": "London"
-    },
-    "time": {
-        "opening_hours": "8-18",
-        "opening_days": "Mon-Fri"
-    }
-}
+def generate_result_list(A, B):
+    C = []
+    for a_value in A:
+        sublist = []
+        while a_value != 0:
+            if B and B[0] <= a_value:
+                sublist.append(B.pop(0))
+                a_value -= sublist[-1]
+            else:
+                sublist.append(a_value)
+                B[0] -= a_value
+                a_value = 0
+        C.append(sublist)
+    return C
 
-# Json to DataFrame
-df = pd.json_normalize(json_data)
 
-# DataFrame to Excel
-excel_filename = 'json_data_to_excel.xlsx'
-df.to_excel(excel_filename, index=False)
+# Example usage
+# A, B = [30, 15, 45], [13, 24, 28, 20, 5]
+A, B = [30, 30, 30], [13, 24, 28, 20, 5]
+result_list = generate_result_list(A, B)
+
+print(result_list)

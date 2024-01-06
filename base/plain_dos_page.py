@@ -7,10 +7,9 @@
 # @Project : PyQtDemo
 
 import os
-import datetime
+import time
 from loguru import logger
 from openpyxl import workbook, styles
-from openpyxl.formula import Tokenizer
 from dateutil import parser
 
 logger.remove()  # remove log to std
@@ -18,31 +17,52 @@ logger.add('record.log')
 
 
 def get_struct_from_input():
-    logger.debug(
-        "结算单输入信息收集，默认拉板对回板为一对多\n"
-    )
+    logger.debug(f"结算单输入信息收集，默认拉板对回板为一对多（{time.ctime()}）")
     unit_price = float(input("请输入拉板/回板单价，默认全程使用该价格进行计算！\n"))
 
-    result_structure = list()
+    idx = 1
+    from_list, to_list = list(), list()
     while True:
-        from_date = input("请输入【拉板】日期，格式示例：20230130（2023年1月30日），键入字母“e”退出程序！\n")
+        from_date = input(f"请输入第{idx}次【拉板】日期，键入字母“e”结束输入！\n")
         if from_date.lower() == 'e':
             break
         from_date = parser.parse(from_date).date()
-        from_amount = int(input("请输入【拉板】块数\n"))
+        from_amount = int(input("请输入该次【拉板】块数\n"))
+        from_list.append([from_date, from_amount])
 
-        to_index = 1
-        to_structure = []
-        while True:
-            to_date1 = input(f"请输入第{to_index}个【回板】日期，键入字母e结束本次输入\n")
-            if to_date1.lower() == 'e':
-                break
-            to_date1 = parser.parse(to_date1).date()
-            to_amount1 = int(input(f"请输入第{to_index}次【回板】块数\n"))
-            to_index += 1
+        idx += 1
+    logger.debug(f"输入了{idx - 1}个拉板日期，合计块数{sum(i[-1] for i in from_list)}")
 
-            to_structure.append([to_date1, to_amount1])
-        result_structure.append([from_date, from_amount, to_structure])
+    idx = 1
+    while True:
+        to_date = input(f"请输入第{idx}次【回板】日期，键入字母“e”结束输入！\n")
+        if to_date.lower() == 'e':
+            break
+        to_date = parser.parse(to_date).date()
+        to_amount = int(input("请输入该次【回板】块数\n"))
+        to_list.append([to_date, to_amount])
+
+        idx += 1
+    logger.debug(f"输入了{idx - 1}个回板日期，合计块数{sum(i[-1] for i in to_list)}")
+
+    result_structure = list()
+    for from_item in from_list:
+        sublist = []
+        from_val = from_item[-1]
+        while from_val != 0:
+            if to_list and to_list[0][-1] <= from_val:
+                sublist.append(to_list.pop(0))
+                from_val -=  sublist[-1][-1]
+            else:
+                temp_val = to_list[0].copy()
+                temp_val[-1] = from_val
+                sublist.append(temp_val)
+                to_list[0][-1] -= from_val
+                from_val = 0
+
+        res = from_item.copy()
+        res.append(sublist)
+        result_structure.append(res)
 
     logger.debug(f"单价：{unit_price}")
     logger.debug(f"结构：{result_structure}")
@@ -115,7 +135,7 @@ def form_xlsx_file(price, structure):
     # endregion manipulate the cells
 
     filename_ = os.path.join(os.path.join(os.environ['USERPROFILE'], 'Desktop'), '年度钢板结算单.xlsx')
-    logger.info(f"the file is saved to {filename_}")
+    logger.info(f"the file is saved to {filename_}\n")
 
     workbook_.save(filename=filename_)
     return filename_

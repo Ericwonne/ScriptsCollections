@@ -97,7 +97,7 @@ def generate_result_list(A, B):
 
 # Example usage
 # A, B = [30, 15, 45], [13, 24, 28, 20, 5]
-A, B = [30, 30, 30], [13, 24, 28, 20, 5]
+A, B = [30, 30, 30, 40], [13, 24, 28, 20, 25,10, 10]
 result_list = generate_result_list(A, B)
 
 print(result_list)

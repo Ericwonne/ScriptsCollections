@@ -8,9 +8,13 @@
 
 import os
 import time
+import pandas as pd
+from math import isnan
 from loguru import logger
 from openpyxl import workbook, styles
 from dateutil import parser
+from tkinter import Tk
+from tkinter.filedialog import askopenfilename
 
 logger.remove()  # remove log to std
 logger.add('record.log')
@@ -18,41 +22,77 @@ logger.add('record.log')
 
 def get_struct_from_input():
     logger.debug(f"结算单输入信息收集，默认拉板对回板为一对多（{time.ctime()}）")
-    unit_price = float(input("请输入拉板/回板单价，默认全程使用该价格进行计算！\n"))
 
-    idx = 1
-    from_list, to_list = list(), list()
-    while True:
-        from_date = input(f"请输入第{idx}次【拉板】日期，键入字母“e”结束输入！\n")
-        if from_date.lower() == 'e':
-            break
-        from_date = parser.parse(from_date).date()
-        from_amount = int(input("请输入该次【拉板】块数\n"))
-        from_list.append([from_date, from_amount])
+    choice = input("1. 手动输入\n2. 读取Excel文件\n").strip()
+    while choice not in ['1', '2']:
+        print("输入有误请重新输入！")
+        choice = input("1. 手动输入\n2. 读取Excel文件\n").strip()
+        continue
 
-        idx += 1
-    logger.debug(f"输入了{idx - 1}个拉板日期，合计块数{sum(i[-1] for i in from_list)}")
+    result_structure, from_list, to_list = list(), list(), list()
+    if choice == '1':
+        unit_price = float(input("请输入拉板/回板单价，默认全程使用该价格进行计算！\n"))
 
-    idx = 1
-    while True:
-        to_date = input(f"请输入第{idx}次【回板】日期，键入字母“e”结束输入！\n")
-        if to_date.lower() == 'e':
-            break
-        to_date = parser.parse(to_date).date()
-        to_amount = int(input("请输入该次【回板】块数\n"))
-        to_list.append([to_date, to_amount])
+        idx = 1
+        while True:
+            from_date = input(f"请输入第{idx}次【拉板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
+            if from_date.strip().lower() == 'e':
+                break
+            elif from_date.strip() == '':
+                print("输入有误请重新输入！")
+                continue
+            from_date = parser.parse(from_date).date()
+            from_amount = int(input("请输入该次【拉板】块数\n"))
+            from_list.append([from_date, from_amount])
 
-        idx += 1
-    logger.debug(f"输入了{idx - 1}个回板日期，合计块数{sum(i[-1] for i in to_list)}")
+            idx += 1
+        logger.debug(f"输入了{idx - 1}个拉板日期，合计块数{sum(i[-1] for i in from_list)}")
 
-    result_structure = list()
+        idx = 1
+        while True:
+            to_date = input(f"请输入第{idx}次【回板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
+            if to_date.strip().lower() == 'e':
+                break
+            elif to_date.strip() == '':
+                print("输入有误请重新输入！")
+                continue
+            to_date = parser.parse(to_date).date()
+            to_amount = int(input("请输入该次【回板】块数\n"))
+            to_list.append([to_date, to_amount])
+
+            idx += 1
+        logger.debug(f"输入了{idx - 1}个回板日期，合计块数{sum(i[-1] for i in to_list)}")
+
+    else:
+        print("使用此方式需excel文件严格按照五列【拉板日期、拉板块数、回板日期、回板块数、单价】进行值填充！")
+        time.sleep(0.75)
+        Tk().withdraw()  # https://stackoverflow.com/questions/3579568/choosing-a-file-in-python-with-simple-dialog
+        filename = askopenfilename()
+        if not filename:
+            print("Not selected any file. Gonna populate nothing into target excel file!")
+            return 0, []
+        logger.debug(f"opened file {filename}")
+        df = pd.DataFrame(pd.read_excel(io=filename))
+        dfv = df.values.T.tolist()
+
+        from_date_l = [parser.parse(i).date() for i in dfv[0] if type(i) is not float]
+        from_count_l = [i for i in dfv[1] if not isnan(float(i))]
+        to_date_l = [parser.parse(i).date() for i in dfv[2] if type(i) is not float]
+        to_count_l = [i for i in dfv[3] if not isnan(float(i))]
+        unit_price = dfv[4][0]
+
+        for x in zip(*[from_date_l, from_count_l]):
+            from_list.append(list(x))
+        for x in zip(*[to_date_l, to_count_l]):
+            to_list.append(list(x))
+
     for from_item in from_list:
         sublist = []
         from_val = from_item[-1]
         while from_val != 0:
             if to_list and to_list[0][-1] <= from_val:
                 sublist.append(to_list.pop(0))
-                from_val -=  sublist[-1][-1]
+                from_val -= sublist[-1][-1]
             else:
                 temp_val = to_list[0].copy()
                 temp_val[-1] = from_val

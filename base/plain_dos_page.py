@@ -42,32 +42,38 @@ def get_struct_from_input():
 
         idx = 1
         while True:
-            from_date = input(f"请输入第{idx}次【拉板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
-            if from_date.strip().lower() == 'e':
-                break
-            elif from_date.strip() == '':
-                print("输入有误请重新输入！")
-                continue
-            from_date = parser.parse(from_date).date()
-            from_amount = int(input("请输入该次【拉板】块数\n"))
-            from_list.append([from_date, from_amount])
+            try:
+                from_date = input(f"请输入第{idx}次【拉板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
+                if from_date.strip().lower() == 'e':
+                    break
+                elif from_date.strip() == '':
+                    print("输入有误请重新输入！")
+                    continue
+                from_date = parser.parse(from_date).date()
+                from_amount = int(input("请输入该次【拉板】块数\n"))
+                from_list.append([from_date, from_amount])
 
-            idx += 1
+                idx += 1
+            except Exception:
+                print("日期输入有误，请重新输入！")
         logger.debug(f"输入了{idx - 1}个拉板日期，合计块数{sum(i[-1] for i in from_list)}")
 
         idx = 1
         while True:
-            to_date = input(f"请输入第{idx}次【回板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
-            if to_date.strip().lower() == 'e':
-                break
-            elif to_date.strip() == '':
-                print("输入有误请重新输入！")
-                continue
-            to_date = parser.parse(to_date).date()
-            to_amount = int(input("请输入该次【回板】块数\n"))
-            to_list.append([to_date, to_amount])
+            try:
+                to_date = input(f"请输入第{idx}次【回板】日期（格式：YYYY/MM/DD或DD/MM/YY），键入字母“e”结束输入！\n")
+                if to_date.strip().lower() == 'e':
+                    break
+                elif to_date.strip() == '':
+                    print("输入有误请重新输入！")
+                    continue
+                to_date = parser.parse(to_date).date()
+                to_amount = int(input("请输入该次【回板】块数\n"))
+                to_list.append([to_date, to_amount])
 
-            idx += 1
+                idx += 1
+            except Exception:
+                print("日期输入有误，请重新输入！")
         logger.debug(f"输入了{idx - 1}个回板日期，合计块数{sum(i[-1] for i in to_list)}")
 
     else:
@@ -198,5 +204,5 @@ def main():
 
 if __name__ == '__main__':
     # From https://chat.openai.com/c/34221f1f-8901-42dc-9ff7-0929658ef3fb
-    # pyinstaller plain_dos_page.py --onefile -n SillyBee.py
+    # pyinstaller plain_dos_page.py --onefile -n SillyBee
     main()

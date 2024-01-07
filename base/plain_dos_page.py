@@ -31,7 +31,14 @@ def get_struct_from_input():
 
     result_structure, from_list, to_list = list(), list(), list()
     if choice == '1':
-        unit_price = float(input("请输入拉板/回板单价，默认全程使用该价格进行计算！\n"))
+        unit_price = None
+        while True:
+            try:
+                unit_price = input("请输入拉板/回板单价，默认全程使用该价格进行计算！\n")
+                unit_price = float(unit_price)
+                break
+            except ValueError:
+                print(f"输入有误：{unit_price}，请重新输入！")
 
         idx = 1
         while True:
@@ -191,5 +198,5 @@ def main():
 
 if __name__ == '__main__':
     # From https://chat.openai.com/c/34221f1f-8901-42dc-9ff7-0929658ef3fb
-    # pyinstaller --onefile -n SillyBee.py
+    # pyinstaller plain_dos_page.py --onefile -n SillyBee.py
     main()

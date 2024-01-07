@@ -55,7 +55,7 @@ def get_struct_from_input():
 
                 idx += 1
             except Exception:
-                print("日期输入有误，请重新输入！")
+                print("日期/数字格式输入有误，请检查后重新输入！")
         logger.debug(f"输入了{idx - 1}个拉板日期，合计块数{sum(i[-1] for i in from_list)}")
 
         idx = 1
@@ -73,7 +73,7 @@ def get_struct_from_input():
 
                 idx += 1
             except Exception:
-                print("日期输入有误，请重新输入！")
+                print("日期/数字格式输入有误，请检查后重新输入！")
         logger.debug(f"输入了{idx - 1}个回板日期，合计块数{sum(i[-1] for i in to_list)}")
 
     else:

@@ -9,6 +9,8 @@
 import os
 import time
 import pandas as pd
+from pandas._libs.tslibs.timestamps import Timestamp
+from pandas._libs.tslibs.nattype import NaTType
 from math import isnan
 from loguru import logger
 from openpyxl import workbook, styles
@@ -88,10 +90,27 @@ def get_struct_from_input():
         df = pd.DataFrame(pd.read_excel(io=filename))
         dfv = df.values.T.tolist()
 
-        from_date_l = [parser.parse(i).date() for i in dfv[0] if type(i) is not float]
+        _type_dfv_00 = type(dfv[0][0])
+        if _type_dfv_00 is str:
+            from_date_l = [parser.parse(i).date() for i in dfv[0] if type(i) is not float]
+        elif _type_dfv_00 is Timestamp:
+            from_date_l = [parser.parse(str(i)).date() for i in dfv[0] if type(i) is not NaTType]
+        else:
+            print("无法处理的日期类型，请重新编辑你的Excel源文件！")
+            return
         from_count_l = [i for i in dfv[1] if not isnan(float(i))]
-        to_date_l = [parser.parse(i).date() for i in dfv[2] if type(i) is not float]
+
+        _type_dfv_20 = type(dfv[2][0])
+        if _type_dfv_20 is str:
+            to_date_l = [parser.parse(i).date() for i in dfv[2] if type(i) is not float]
+        elif _type_dfv_20 is Timestamp:
+            to_date_l = [parser.parse(str(i)).date() for i in dfv[2] if type(i) is not NaTType]
+        else:
+            print("无法处理的日期类型，请重新编辑你的Excel源文件！")
+            return
+
         to_count_l = [i for i in dfv[3] if not isnan(float(i))]
+
         unit_price = dfv[4][0]
 
         for x in zip(*[from_date_l, from_count_l]):
